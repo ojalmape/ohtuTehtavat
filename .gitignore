@@ -6,3 +6,6 @@ ohtuTehtavat/
 /ohtuTehtavat/
 .coverage
 htmlcov/
+lot.html
+output.xml
+report.html
