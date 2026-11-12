@@ -36,5 +36,15 @@ class UserService:
     def validate(self, username, password):
         if not username or not password:
             raise UserInputError("Username and password are required")
-
+        if self._user_repository.find_by_username(username):
+            raise UserInputError("Username already exists")
+        if len(username) < 3:
+            raise UserInputError("Username is too short")
+        if not all("a" <= char <= "z" for char in username):
+            raise UserInputError("Invalid username")
+        if len(password) < 8:
+            raise UserInputError("Password is too short")
+        if password.isalpha():
+            raise UserInputError("Invalid password")
         # toteuta loput tarkastukset tänne ja nosta virhe virhetilanteissa
+    
